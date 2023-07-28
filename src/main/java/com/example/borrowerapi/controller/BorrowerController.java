@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 
 @RestController
@@ -32,11 +33,12 @@ public class BorrowerController {
     }
 
     @GetMapping("/books")
-    public List<Book> getBooksBorrowedByBorrower(@PathVariable Long id) {
+    public Set<Book> getBooksBorrowedByBorrower(@PathVariable Long id) {
         Borrower borrower = borrowerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Borrower not found with id: " + id));
 
-        return borrower.getBooks();
+        /*return borrower.getBooks();*/
+        return null;
     }
 
     // Other CRUD APIs for Borrower can be added here
