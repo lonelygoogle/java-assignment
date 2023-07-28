@@ -37,8 +37,7 @@ public class BorrowerController {
         Borrower borrower = borrowerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Borrower not found with id: " + id));
 
-        /*return borrower.getBooks();*/
-        return null;
+        return borrower.getBooks();
     }
 
     // Other CRUD APIs for Borrower can be added here
