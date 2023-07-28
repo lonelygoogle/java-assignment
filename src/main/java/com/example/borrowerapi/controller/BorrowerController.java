@@ -32,7 +32,7 @@ public class BorrowerController {
         return borrowerRepository.save(borrower);
     }
 
-    @GetMapping("/books")
+    @GetMapping("/books/{id}")
     public Set<Book> getBooksBorrowedByBorrower(@PathVariable Long id) {
         Borrower borrower = borrowerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Borrower not found with id: " + id));
