@@ -21,17 +21,17 @@ public class BorrowerController {
         this.borrowerRepository = borrowerRepository;
     }
 
-    @GetMapping
+    @GetMapping(value="getAllBorrowers")
     public List<Borrower> getAllBorrowers() {
         return borrowerRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping(value="createBorrower")
     public Borrower createBorrower(@RequestBody Borrower borrower) {
         return borrowerRepository.save(borrower);
     }
 
-    @GetMapping("/{id}/books")
+    @GetMapping("/books")
     public List<Book> getBooksBorrowedByBorrower(@PathVariable Long id) {
         Borrower borrower = borrowerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Borrower not found with id: " + id));
